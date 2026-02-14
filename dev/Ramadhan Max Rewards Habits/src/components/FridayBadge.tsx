@@ -27,7 +27,7 @@ export default function FridayBadge({ visible }: FridayBadgeProps) {
               Jumu'ah Mubarak
             </h3>
             <p
-              className="text-[#1d1d1f]/60 text-sm mt-0.5"
+              className="text-[#1d1d1f]/90 text-sm mt-0.5"
               style={{ fontFamily: 'Amiri, serif' }}
             >
               {/* "Blessed Friday" in Arabic */}

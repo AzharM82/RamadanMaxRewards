@@ -295,7 +295,7 @@ export default function ProgressDashboard({
           <Icon3D name="reward" className="w-5 h-5 flex-shrink-0 mt-0.5" />
           <div>
             <p
-              className="text-sm text-[#1d1d1f]/80 leading-relaxed italic"
+              className="text-sm text-[#1d1d1f] leading-relaxed italic"
               style={{ fontFamily: 'Amiri, serif' }}
             >
               {stats.hadith.text}

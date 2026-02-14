@@ -80,7 +80,7 @@ export default function LastTenNightsBanner({
 
           {/* Arabic */}
           <p
-            className="text-center text-sm text-[#7B5EA7]/50 mb-2"
+            className="text-center text-sm text-[#7B5EA7] mb-2"
             style={{ fontFamily: 'Amiri, serif' }}
           >
             {/* Al-Ashr Al-Awaakhir */}

@@ -29,7 +29,7 @@ export default function ProfileSetupPage() {
     <div className="min-h-screen bg-[#FDFAF5] flex items-center justify-center px-4">
       <div className="max-w-sm w-full">
         <div className="text-center mb-8">
-          <p className="text-[#1d1d1f]/60 text-lg mb-2" style={{ fontFamily: 'Amiri, serif' }}>
+          <p className="text-[#1B6B4A] text-lg mb-2" style={{ fontFamily: 'Amiri, serif' }}>
             بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ
           </p>
           <h1 className="text-2xl font-semibold text-[#1d1d1f] tracking-tight">

@@ -53,7 +53,7 @@ export default function SectionPanel({
               <h2 className="text-base sm:text-lg font-semibold text-[#1d1d1f] leading-tight">
                 {section.title}
               </h2>
-              <span className="text-sm text-[#aeaeb2]" style={{ fontFamily: 'Amiri, serif' }}>
+              <span className="text-sm text-[#1d1d1f]/80" style={{ fontFamily: 'Amiri, serif' }}>
                 {section.titleAr}
               </span>
             </div>

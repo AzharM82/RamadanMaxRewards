@@ -62,7 +62,7 @@ export default function DeedDetailSheet({ deed, isCompleted, onClose, onToggle }
           {/* Title */}
           <h2 className="text-xl font-bold text-[#1d1d1f]">{deed.title}</h2>
           {deed.titleAr && (
-            <p className="text-lg text-[#1d1d1f]/60 mt-1" style={{ fontFamily: 'Amiri, serif' }}>
+            <p className="text-lg text-[#1d1d1f]/90 mt-1" style={{ fontFamily: 'Amiri, serif' }}>
               {deed.titleAr}
             </p>
           )}

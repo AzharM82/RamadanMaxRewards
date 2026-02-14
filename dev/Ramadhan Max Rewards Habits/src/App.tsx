@@ -238,7 +238,7 @@ function App() {
           <div className="flex items-center justify-between">
             <div className="flex-1" />
             <div className="text-center flex-1">
-              <p className="text-[#1d1d1f]/60 text-base" style={{ fontFamily: 'Amiri, serif' }}>
+              <p className="text-[#1B6B4A] text-base" style={{ fontFamily: 'Amiri, serif' }}>
                 بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ
               </p>
               <h1 className="text-xl font-semibold text-[#1d1d1f] tracking-tight mt-1">
@@ -352,7 +352,7 @@ function App() {
       <footer className="max-w-2xl mx-auto px-4 mt-16 pb-8 text-center">
         <div className="border-t border-[#E8E4DE] pt-8">
           <p
-            className="text-[#1d1d1f]/50 text-sm mb-2"
+            className="text-[#1B6B4A] text-sm mb-2"
             style={{ fontFamily: 'Amiri, serif' }}
           >
             رَبَّنَا تَقَبَّلْ مِنَّا إِنَّكَ أَنتَ السَّمِيعُ الْعَلِيمُ

@@ -61,7 +61,7 @@ export default function DeedCard({ deed, isCompleted, onToggle, onShowDetail }: 
                 {deed.title}
               </h3>
               {deed.titleAr && (
-                <span className="text-sm text-[#aeaeb2]" style={{ fontFamily: 'Amiri, serif' }}>
+                <span className="text-sm text-[#1d1d1f]/80" style={{ fontFamily: 'Amiri, serif' }}>
                   {deed.titleAr}
                 </span>
               )}
