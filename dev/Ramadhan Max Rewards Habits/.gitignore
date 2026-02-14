@@ -3,3 +3,4 @@ dist
 .env
 api/node_modules
 api/dist
+*.md
