@@ -5,7 +5,7 @@ import { getProfilesContainer, getProgressContainer } from "../lib/cosmos.js";
 app.http("AdminTelemetry", {
   methods: ["GET"],
   authLevel: "anonymous",
-  route: "admin/telemetry",
+  route: "admin-telemetry",
   handler: async (req: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> => {
     try {
       const principal = requireAuth(req);

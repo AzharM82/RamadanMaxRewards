@@ -98,7 +98,7 @@ export async function saveAllProgress(habits: Record<string, Record<string, bool
 }
 
 export async function fetchTelemetry(): Promise<TelemetryData> {
-  const res = await fetch("/api/admin/telemetry");
+  const res = await fetch("/api/admin-telemetry");
   if (!res.ok) {
     const body = await res.json().catch(() => ({}));
     throw new Error(body.error || `Telemetry failed (${res.status})`);
