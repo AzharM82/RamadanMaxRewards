@@ -71,7 +71,7 @@ export default function AdminPage({ onClose }: AdminPageProps) {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
-                  className={`w-4 h-4 text-[#86868b] ${loading ? 'animate-spin' : ''}`}
+                  className={`w-4 h-4 text-[#1d1d1f] ${loading ? 'animate-spin' : ''}`}
                 >
                   <path
                     fillRule="evenodd"
@@ -89,7 +89,7 @@ export default function AdminPage({ onClose }: AdminPageProps) {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
-                  className="w-5 h-5 text-[#86868b]"
+                  className="w-5 h-5 text-[#1d1d1f]"
                 >
                   <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
                 </svg>
@@ -97,7 +97,7 @@ export default function AdminPage({ onClose }: AdminPageProps) {
             </div>
           </div>
           {data && (
-            <p className="text-xs text-[#86868b] mt-1">
+            <p className="text-xs text-[#1d1d1f] mt-1">
               Last updated: {timeAgo(data.queriedAt)}
             </p>
           )}
@@ -110,7 +110,7 @@ export default function AdminPage({ onClose }: AdminPageProps) {
           <div className="flex items-center justify-center py-24">
             <div className="text-center">
               <div className="w-8 h-8 border-2 border-[#1B6B4A] border-t-transparent rounded-full animate-spin mx-auto" />
-              <p className="text-[#86868b] text-sm mt-3">Loading telemetry...</p>
+              <p className="text-[#1d1d1f] text-sm mt-3">Loading telemetry...</p>
             </div>
           </div>
         )}
@@ -137,15 +137,15 @@ export default function AdminPage({ onClose }: AdminPageProps) {
             <div className="grid grid-cols-3 gap-3">
               <div className="bg-[#FFFEFA] border border-[#E8E4DE] rounded-2xl p-4 text-center">
                 <p className="text-2xl font-bold text-[#1d1d1f]">{data.totalUsers}</p>
-                <p className="text-xs text-[#86868b] mt-1">Total Users</p>
+                <p className="text-xs text-[#1d1d1f] mt-1">Total Users</p>
               </div>
               <div className="bg-[#FFFEFA] border border-[#E8E4DE] rounded-2xl p-4 text-center">
                 <p className="text-2xl font-bold text-[#1B6B4A]">{data.usersActiveToday}</p>
-                <p className="text-xs text-[#86868b] mt-1">Active Today</p>
+                <p className="text-xs text-[#1d1d1f] mt-1">Active Today</p>
               </div>
               <div className="bg-[#FFFEFA] border border-[#E8E4DE] rounded-2xl p-4 text-center">
                 <p className="text-2xl font-bold text-[#1d1d1f]">{data.usersActiveThisWeek}</p>
-                <p className="text-xs text-[#86868b] mt-1">Active This Week</p>
+                <p className="text-xs text-[#1d1d1f] mt-1">Active This Week</p>
               </div>
             </div>
 
@@ -160,7 +160,7 @@ export default function AdminPage({ onClose }: AdminPageProps) {
                   Microsoft <span className="font-bold">{data.usersByProvider.microsoft}</span>
                 </span>
                 {data.usersByProvider.other > 0 && (
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#86868b]/10 text-[#86868b] text-sm font-medium">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#86868b]/10 text-[#1d1d1f] text-sm font-medium">
                     Other <span className="font-bold">{data.usersByProvider.other}</span>
                   </span>
                 )}
@@ -191,15 +191,15 @@ export default function AdminPage({ onClose }: AdminPageProps) {
             <div className="grid grid-cols-3 gap-3">
               <div className="bg-[#FFFEFA] border border-[#E8E4DE] rounded-2xl p-4 text-center">
                 <p className="text-2xl font-bold text-[#1d1d1f]">{data.totalDeedsCompleted}</p>
-                <p className="text-xs text-[#86868b] mt-1">Deeds Completed</p>
+                <p className="text-xs text-[#1d1d1f] mt-1">Deeds Completed</p>
               </div>
               <div className="bg-[#FFFEFA] border border-[#E8E4DE] rounded-2xl p-4 text-center">
                 <p className="text-2xl font-bold text-[#1B6B4A]">{data.averageCompletionPercent}%</p>
-                <p className="text-xs text-[#86868b] mt-1">Avg Completion</p>
+                <p className="text-xs text-[#1d1d1f] mt-1">Avg Completion</p>
               </div>
               <div className="bg-[#FFFEFA] border border-[#E8E4DE] rounded-2xl p-4 text-center">
                 <p className="text-2xl font-bold text-[#1d1d1f]">{data.averageQuranJuz.toFixed(1)}</p>
-                <p className="text-xs text-[#86868b] mt-1">Avg Quran Juz</p>
+                <p className="text-xs text-[#1d1d1f] mt-1">Avg Quran Juz</p>
               </div>
             </div>
 
@@ -207,7 +207,7 @@ export default function AdminPage({ onClose }: AdminPageProps) {
             <div className="bg-[#FFFEFA] border border-[#E8E4DE] rounded-2xl p-4">
               <p className="text-sm font-semibold text-[#1d1d1f] mb-3">Recent Signups</p>
               {data.recentSignups.length === 0 ? (
-                <p className="text-xs text-[#86868b]">No signups yet.</p>
+                <p className="text-xs text-[#1d1d1f]">No signups yet.</p>
               ) : (
                 <ul className="space-y-2">
                   {data.recentSignups.slice(0, 10).map((u, i) => (
@@ -224,7 +224,7 @@ export default function AdminPage({ onClose }: AdminPageProps) {
                           {u.provider.toLowerCase().includes('google') ? 'Google' : 'Microsoft'}
                         </span>
                       </div>
-                      <span className="text-xs text-[#86868b]">{timeAgo(u.createdAt)}</span>
+                      <span className="text-xs text-[#1d1d1f]">{timeAgo(u.createdAt)}</span>
                     </li>
                   ))}
                 </ul>
@@ -235,13 +235,13 @@ export default function AdminPage({ onClose }: AdminPageProps) {
             <div className="bg-[#FFFEFA] border border-[#E8E4DE] rounded-2xl p-4">
               <p className="text-sm font-semibold text-[#1d1d1f] mb-3">Recent Activity</p>
               {data.lastActivityTimes.length === 0 ? (
-                <p className="text-xs text-[#86868b]">No activity yet.</p>
+                <p className="text-xs text-[#1d1d1f]">No activity yet.</p>
               ) : (
                 <ul className="space-y-2">
                   {data.lastActivityTimes.slice(0, 10).map((u, i) => (
                     <li key={i} className="flex items-center justify-between text-sm">
                       <span className="text-[#1d1d1f] font-medium">{u.displayName}</span>
-                      <span className="text-xs text-[#86868b]">{timeAgo(u.updatedAt)}</span>
+                      <span className="text-xs text-[#1d1d1f]">{timeAgo(u.updatedAt)}</span>
                     </li>
                   ))}
                 </ul>
