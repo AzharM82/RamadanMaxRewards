@@ -88,7 +88,7 @@ export default function LastTenNightsBanner({
           </p>
 
           {/* Subtitle */}
-          <p className="text-center text-xs text-[#86868b]">
+          <p className="text-center text-xs text-[#1d1d1f]">
             Night {nightNumber} of 10 — Seek Laylat al-Qadr
           </p>
 
@@ -104,7 +104,7 @@ export default function LastTenNightsBanner({
                 This could be Laylat al-Qadr!
               </p>
               <p
-                className="text-xs text-[#86868b] mt-1.5"
+                className="text-xs text-[#1d1d1f] mt-1.5"
                 style={{ fontFamily: 'Amiri, serif' }}
               >
                 "The Night of Decree is better than a thousand months"
@@ -117,7 +117,7 @@ export default function LastTenNightsBanner({
 
           {/* Dua reminder */}
           <div className="mt-4 text-center">
-            <p className="text-xs text-[#86868b] italic">
+            <p className="text-xs text-[#1d1d1f] italic">
               "Allahumma innaka 'afuwwun tuhibbul-'afwa fa'fu 'anni"
             </p>
             <p className="text-[10px] text-[#aeaeb2] mt-1">

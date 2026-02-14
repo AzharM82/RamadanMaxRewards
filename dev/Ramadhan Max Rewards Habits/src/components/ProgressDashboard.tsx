@@ -165,7 +165,7 @@ export default function ProgressDashboard({
       <div className="grid grid-cols-3 gap-3 mb-6">
         <div className="text-center p-4 rounded-2xl bg-[#FFFEFA] border border-[#E8E4DE] shadow-[0_1px_3px_rgba(0,0,0,0.08)]">
           <p className="text-2xl font-semibold text-[#1d1d1f]">{stats.totalDeedsDone}</p>
-          <p className="text-[10px] text-[#86868b] mt-1 uppercase tracking-wider font-medium">
+          <p className="text-[10px] text-[#1d1d1f] mt-1 uppercase tracking-wider font-medium">
             Total Deeds
           </p>
         </div>
@@ -173,7 +173,7 @@ export default function ProgressDashboard({
           <p className="text-2xl font-semibold text-[#1d1d1f]">
             {stats.bestDayNum > 0 ? `Day ${stats.bestDayNum}` : '--'}
           </p>
-          <p className="text-[10px] text-[#86868b] mt-1 uppercase tracking-wider font-medium">
+          <p className="text-[10px] text-[#1d1d1f] mt-1 uppercase tracking-wider font-medium">
             Best Day
           </p>
         </div>
@@ -181,7 +181,7 @@ export default function ProgressDashboard({
           <p className="text-2xl font-semibold text-[#1d1d1f]">
             {stats.streak > 0 ? stats.streak : 0}
           </p>
-          <p className="text-[10px] text-[#86868b] mt-1 uppercase tracking-wider font-medium">
+          <p className="text-[10px] text-[#1d1d1f] mt-1 uppercase tracking-wider font-medium">
             Day Streak
           </p>
         </div>
@@ -189,7 +189,7 @@ export default function ProgressDashboard({
 
       {/* ---- 30-day heatmap ---- */}
       <div className="mb-6">
-        <h3 className="text-xs font-semibold text-[#86868b] uppercase tracking-wider mb-3">
+        <h3 className="text-xs font-semibold text-[#1d1d1f] uppercase tracking-wider mb-3">
           30-Day Overview
         </h3>
         <div className="grid grid-cols-10 gap-1.5">

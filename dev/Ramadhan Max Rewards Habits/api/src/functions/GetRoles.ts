@@ -1,17 +1,16 @@
 import { app, HttpRequest, HttpResponseInit, InvocationContext } from "@azure/functions";
-import { getClientPrincipal } from "../lib/auth.js";
 
 app.http("GetRoles", {
   methods: ["POST"],
   authLevel: "anonymous",
   route: "GetRoles",
   handler: async (req: HttpRequest, _context: InvocationContext): Promise<HttpResponseInit> => {
-    const principal = getClientPrincipal(req);
+    const body = (await req.json()) as { userDetails?: string } | null;
     const adminEmail = process.env.ADMIN_EMAIL || "";
 
     const roles: string[] = [];
 
-    if (principal && principal.userDetails.toLowerCase() === adminEmail.toLowerCase()) {
+    if (body?.userDetails && body.userDetails.toLowerCase() === adminEmail.toLowerCase()) {
       roles.push("admin");
     }
 

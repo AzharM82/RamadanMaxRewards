@@ -66,7 +66,7 @@ export default function DeedCard({ deed, isCompleted, onToggle, onShowDetail }: 
                 </span>
               )}
             </div>
-            <p className={`mt-1.5 text-sm leading-relaxed transition-opacity duration-300 ${isCompleted ? 'text-[#86868b]' : 'text-[#86868b]'}`}>
+            <p className={`mt-1.5 text-sm leading-relaxed transition-opacity duration-300 ${isCompleted ? 'text-[#1d1d1f]' : 'text-[#1d1d1f]'}`}>
               {deed.description}
             </p>
             {/* Reward summary — 1 line italic gold */}

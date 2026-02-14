@@ -215,7 +215,7 @@ function App() {
       <div className="min-h-screen bg-[#FDFAF5] flex items-center justify-center">
         <div className="text-center">
           <div className="w-8 h-8 border-2 border-[#1B6B4A] border-t-transparent rounded-full animate-spin mx-auto" />
-          <p className="text-[#86868b] text-sm mt-3">Loading...</p>
+          <p className="text-[#1d1d1f] text-sm mt-3">Loading...</p>
         </div>
       </div>
     );
@@ -258,17 +258,17 @@ function App() {
                   className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-[#E8E4DE] transition-colors cursor-pointer"
                   title="Admin Dashboard"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-[#86868b]">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-[#1d1d1f]">
                     <path fillRule="evenodd" d="M7.84 1.804A1 1 0 0 1 8.82 1h2.36a1 1 0 0 1 .98.804l.331 1.652a6.993 6.993 0 0 1 1.929 1.115l1.598-.54a1 1 0 0 1 1.186.447l1.18 2.044a1 1 0 0 1-.205 1.251l-1.267 1.113a7.047 7.047 0 0 1 0 2.228l1.267 1.113a1 1 0 0 1 .206 1.25l-1.18 2.045a1 1 0 0 1-1.187.447l-1.598-.54a6.993 6.993 0 0 1-1.929 1.115l-.33 1.652a1 1 0 0 1-.98.804H8.82a1 1 0 0 1-.98-.804l-.331-1.652a6.993 6.993 0 0 1-1.929-1.115l-1.598.54a1 1 0 0 1-1.186-.447l-1.18-2.044a1 1 0 0 1 .205-1.251l1.267-1.114a7.05 7.05 0 0 1 0-2.227L1.821 7.773a1 1 0 0 1-.206-1.25l1.18-2.045a1 1 0 0 1 1.187-.447l1.598.54A6.992 6.992 0 0 1 7.51 3.456l.33-1.652ZM10 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clipRule="evenodd" />
                   </svg>
                 </button>
               )}
-              <span className="text-xs text-[#86868b] truncate max-w-[80px]">
+              <span className="text-xs text-[#1d1d1f] truncate max-w-[80px]">
                 {profile?.displayName}
               </span>
               <button
                 onClick={logout}
-                className="text-xs text-[#86868b] hover:text-[#1d1d1f] transition-colors cursor-pointer"
+                className="text-xs text-[#1d1d1f] hover:text-[#1d1d1f] transition-colors cursor-pointer"
                 title="Sign out"
               >
                 Sign out
@@ -299,11 +299,11 @@ function App() {
                   <span className="px-2 py-0.5 rounded-full bg-[#7B5EA7]/10 text-[#7B5EA7] text-[10px] font-semibold">Last 10</span>
                 )}
               </div>
-              <p className="text-xs text-[#86868b] mt-1">{selectedGregorianDate}</p>
+              <p className="text-xs text-[#1d1d1f] mt-1">{selectedGregorianDate}</p>
             </div>
             <div className="text-right">
               <span className="text-2xl font-bold text-[#1B6B4A]">{dayCompletionPercent}%</span>
-              <p className="text-[10px] text-[#86868b]">completed</p>
+              <p className="text-[10px] text-[#1d1d1f]">completed</p>
             </div>
           </div>
           {/* Progress bar */}
@@ -374,11 +374,11 @@ function App() {
           >
             رَبَّنَا تَقَبَّلْ مِنَّا إِنَّكَ أَنتَ السَّمِيعُ الْعَلِيمُ
           </p>
-          <p className="text-[#86868b] text-xs italic leading-relaxed">
+          <p className="text-[#1d1d1f] text-xs italic leading-relaxed">
             "Our Lord, accept [this] from us. Indeed, You are the Hearing, the
             Knowing." (2:127)
           </p>
-          <p className="text-[#86868b]/50 text-[10px] mt-4 tracking-wide">
+          <p className="text-[#1d1d1f]/50 text-[10px] mt-4 tracking-wide">
             Ramadan Max Rewards · Built with sincerity for the Ummah
           </p>
         </div>
@@ -415,7 +415,7 @@ function App() {
               onClick={() => handleTabChange(tab.id)}
               className={`
                 flex-1 flex flex-col items-center py-2 pt-2.5 cursor-pointer transition-colors duration-200
-                ${activeTab === tab.id ? 'text-[#1B6B4A]' : 'text-[#86868b]'}
+                ${activeTab === tab.id ? 'text-[#1B6B4A]' : 'text-[#1d1d1f]'}
               `}
             >
               <Icon3D name={tab.icon} className="w-6 h-6" />

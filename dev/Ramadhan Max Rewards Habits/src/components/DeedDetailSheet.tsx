@@ -53,7 +53,7 @@ export default function DeedDetailSheet({ deed, isCompleted, onClose, onToggle }
           <div className="flex justify-end mb-2">
             <button
               onClick={onClose}
-              className="w-8 h-8 rounded-full bg-[#F3EDE4] flex items-center justify-center text-[#86868b] hover:text-[#1d1d1f] transition-colors cursor-pointer"
+              className="w-8 h-8 rounded-full bg-[#F3EDE4] flex items-center justify-center text-[#1d1d1f] hover:text-[#1d1d1f] transition-colors cursor-pointer"
             >
               <Icon3D name="close" className="w-4 h-4" />
             </button>
@@ -68,14 +68,14 @@ export default function DeedDetailSheet({ deed, isCompleted, onClose, onToggle }
           )}
 
           {/* Description */}
-          <p className="mt-4 text-sm text-[#86868b] leading-relaxed">{deed.description}</p>
+          <p className="mt-4 text-sm text-[#1d1d1f] leading-relaxed">{deed.description}</p>
 
           {/* Transliteration/Translation card */}
           {deed.transliteration && (
             <div className="mt-4 p-4 rounded-xl bg-[#F8F4EE] border border-[#E8E4DE]">
               <p className="text-sm italic text-[#1d1d1f]/70 leading-relaxed">{deed.transliteration}</p>
               {deed.translation && (
-                <p className="mt-2 text-xs text-[#86868b] leading-relaxed">{deed.translation}</p>
+                <p className="mt-2 text-xs text-[#1d1d1f] leading-relaxed">{deed.translation}</p>
               )}
             </div>
           )}
@@ -95,13 +95,13 @@ export default function DeedDetailSheet({ deed, isCompleted, onClose, onToggle }
               <Icon3D name="info" className="w-4 h-4" />
               <span className="text-sm font-semibold text-[#1B6B4A]">Tip</span>
             </div>
-            <p className="mt-1.5 text-xs text-[#86868b] leading-relaxed">{deed.tip}</p>
+            <p className="mt-1.5 text-xs text-[#1d1d1f] leading-relaxed">{deed.tip}</p>
           </div>
 
           {/* Sources */}
           {deed.sources.length > 0 && (
             <div className="mt-4">
-              <h4 className="text-xs font-semibold text-[#86868b] uppercase tracking-wider mb-2">Sources</h4>
+              <h4 className="text-xs font-semibold text-[#1d1d1f] uppercase tracking-wider mb-2">Sources</h4>
               <div className="space-y-2">
                 {deed.sources.map((source, idx) => (
                   <div key={idx} className="p-3.5 rounded-xl bg-[#F8F4EE] border border-[#E8E4DE]">
@@ -119,7 +119,7 @@ export default function DeedDetailSheet({ deed, isCompleted, onClose, onToggle }
             className={`
               mt-6 w-full py-3.5 rounded-2xl font-semibold text-sm transition-all duration-300 cursor-pointer
               ${isCompleted
-                ? 'bg-[#F3EDE4] text-[#86868b]'
+                ? 'bg-[#F3EDE4] text-[#1d1d1f]'
                 : 'bg-[#1B6B4A] text-white hover:bg-[#155A3E]'
               }
             `}

@@ -35,7 +35,7 @@ export default function ProfileSetupPage() {
           <h1 className="text-2xl font-semibold text-[#1d1d1f] tracking-tight">
             Welcome to Ramadan <span className="text-[#1B6B4A]">Max Rewards</span>
           </h1>
-          <p className="text-[#86868b] text-sm mt-2">
+          <p className="text-[#1d1d1f] text-sm mt-2">
             What should we call you?
           </p>
         </div>
@@ -65,7 +65,7 @@ export default function ProfileSetupPage() {
           </button>
         </form>
 
-        <p className="text-center text-[#86868b]/60 text-xs mt-8">
+        <p className="text-center text-[#1d1d1f]/60 text-xs mt-8">
           You can change your name later in settings
         </p>
       </div>

@@ -74,7 +74,7 @@ export default function DaySelector({
     <div className="w-full">
       {/* Label */}
       <div className="flex items-center justify-between px-1 mb-3">
-        <h2 className="text-xs font-semibold tracking-wider uppercase text-[#86868b]">
+        <h2 className="text-xs font-semibold tracking-wider uppercase text-[#1d1d1f]">
           Ramadan Days
         </h2>
         <span className="text-xs text-[#aeaeb2]">
@@ -144,7 +144,7 @@ export default function DaySelector({
               {friday && (
                 <span
                   className={`text-[7px] font-medium mt-0.5 tracking-wide ${
-                    isSelected ? 'text-[#1B6B4A]' : 'text-[#86868b]'
+                    isSelected ? 'text-[#1B6B4A]' : 'text-[#1d1d1f]'
                   }`}
                 >
                   Jumu'ah

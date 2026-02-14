@@ -89,7 +89,7 @@ function HabitGroup({
     <div>
       <div className="flex items-center gap-2 mb-3">
         <span className="text-base flex items-center">{icon}</span>
-        <h3 className="text-xs font-semibold text-[#86868b] uppercase tracking-wider">
+        <h3 className="text-xs font-semibold text-[#1d1d1f] uppercase tracking-wider">
           {title}
         </h3>
       </div>
@@ -151,7 +151,7 @@ function HabitGroup({
                   className={`text-[10px] font-medium px-2.5 py-1 rounded-full transition-colors duration-300 ${
                     done
                       ? 'bg-[rgba(27,107,74,0.08)] text-[#1B6B4A]/60'
-                      : 'bg-[#f5f5f7] text-[#86868b]'
+                      : 'bg-[#f5f5f7] text-[#1d1d1f]'
                   }`}
                 >
                   {habit.target}
@@ -213,7 +213,7 @@ export default function HabitTracker({
           <h2 className="text-lg font-semibold text-[#1d1d1f]">
             Habit Tracker
           </h2>
-          <p className="text-xs text-[#86868b] mt-0.5">
+          <p className="text-xs text-[#1d1d1f] mt-0.5">
             Day {day}{' '}
             {isFriday && (
               <span className="text-[#1d1d1f]">&middot; Jumu'ah</span>
@@ -228,7 +228,7 @@ export default function HabitTracker({
 
       {/* Summary bar */}
       <div className="mb-6">
-        <div className="flex items-center justify-between text-xs text-[#86868b] mb-2">
+        <div className="flex items-center justify-between text-xs text-[#1d1d1f] mb-2">
           <span>
             {completedCount} of {totalCount} habits completed
           </span>

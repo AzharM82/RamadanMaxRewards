@@ -10,7 +10,7 @@ export default function LoginPage() {
           <h1 className="text-2xl font-semibold text-[#1d1d1f] tracking-tight">
             Ramadan <span className="text-[#1B6B4A]">Max Rewards</span>
           </h1>
-          <p className="text-[#86868b] text-sm mt-2">
+          <p className="text-[#1d1d1f] text-sm mt-2">
             Sign in to track your progress across devices
           </p>
         </div>
@@ -45,7 +45,7 @@ export default function LoginPage() {
         </div>
 
         {/* Footer */}
-        <p className="text-center text-[#86868b]/60 text-xs mt-8">
+        <p className="text-center text-[#1d1d1f]/60 text-xs mt-8">
           Your progress is saved securely in the cloud
         </p>
       </div>

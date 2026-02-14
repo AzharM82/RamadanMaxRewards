@@ -40,7 +40,7 @@ export default function FridayBadge({ visible }: FridayBadgeProps) {
         </div>
 
         {/* Subtitle */}
-        <p className="relative text-center text-xs text-[#86868b] mt-3">
+        <p className="relative text-center text-xs text-[#1d1d1f] mt-3">
           "The best day on which the sun rises is Friday." — Sahih Muslim 854
         </p>
       </div>

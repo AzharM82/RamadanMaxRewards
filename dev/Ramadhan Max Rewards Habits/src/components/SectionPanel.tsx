@@ -57,12 +57,12 @@ export default function SectionPanel({
                 {section.titleAr}
               </span>
             </div>
-            <p className="mt-0.5 text-xs text-[#86868b]">{section.timeWindow}</p>
+            <p className="mt-0.5 text-xs text-[#1d1d1f]">{section.timeWindow}</p>
           </div>
         </div>
 
         <div className="flex items-center gap-3 flex-shrink-0">
-          <span className={`text-xs font-medium transition-colors duration-300 flex items-center gap-1 ${allDone ? 'text-[#1B6B4A]' : 'text-[#86868b]'}`}>
+          <span className={`text-xs font-medium transition-colors duration-300 flex items-center gap-1 ${allDone ? 'text-[#1B6B4A]' : 'text-[#1d1d1f]'}`}>
             {allDone && (
               <Icon3D name="checkCircle" className="w-3.5 h-3.5" />
             )}
