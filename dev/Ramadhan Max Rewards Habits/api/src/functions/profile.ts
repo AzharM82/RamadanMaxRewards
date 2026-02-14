@@ -79,7 +79,7 @@ app.http("ProfilePost", {
 app.http("AdminTelemetry", {
   methods: ["GET"],
   authLevel: "anonymous",
-  route: "admin-telemetry",
+  route: "telemetry",
   handler: async (req: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> => {
     try {
       const principal = requireAuth(req);
