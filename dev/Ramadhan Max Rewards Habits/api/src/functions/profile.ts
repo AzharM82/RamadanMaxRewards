@@ -76,6 +76,15 @@ app.http("ProfilePost", {
   },
 });
 
+app.http("AdminPing", {
+  methods: ["GET"],
+  authLevel: "anonymous",
+  route: "admin-ping",
+  handler: async (): Promise<HttpResponseInit> => {
+    return { status: 200, jsonBody: { ok: true, ts: new Date().toISOString() } };
+  },
+});
+
 app.http("AdminTelemetry", {
   methods: ["GET"],
   authLevel: "anonymous",
