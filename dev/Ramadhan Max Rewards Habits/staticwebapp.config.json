@@ -59,9 +59,5 @@
   },
   "platform": {
     "apiRuntime": "node:20"
-  },
-  "mimeTypes": {
-    ".js": "text/javascript",
-    ".mjs": "text/javascript"
   }
 }
