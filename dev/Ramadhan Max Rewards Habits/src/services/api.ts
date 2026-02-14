@@ -31,6 +31,25 @@ export interface ProgressData {
   quran: Record<string, number>;
 }
 
+// ---- Telemetry types ----
+
+export interface TelemetryData {
+  totalUsers: number;
+  usersByProvider: { google: number; microsoft: number; other: number };
+  recentSignups: Array<{ displayName: string; email: string; createdAt: string; provider: string }>;
+  signupsByDay: Array<{ date: string; count: number }>;
+  activeUsers: number;
+  usersActiveToday: number;
+  usersActiveThisWeek: number;
+  lastActivityTimes: Array<{ displayName: string; updatedAt: string }>;
+  totalDeedsCompleted: number;
+  averageCompletionPercent: number;
+  usersWithQuranProgress: number;
+  averageQuranJuz: number;
+  dailyActivity: Array<{ day: number; activeUsers: number; avgCompletion: number }>;
+  queriedAt: string;
+}
+
 // ---- API functions ----
 
 export async function fetchAuthMe(): Promise<AuthMeResponse> {
@@ -75,5 +94,11 @@ export async function saveAllProgress(habits: Record<string, Record<string, bool
     const body = await res.json().catch(() => ({}));
     throw new Error(body.error || `Failed to save progress (${res.status})`);
   }
+  return res.json();
+}
+
+export async function fetchTelemetry(): Promise<TelemetryData> {
+  const res = await fetch("/api/admin/telemetry");
+  if (!res.ok) throw new Error("Failed to fetch telemetry");
   return res.json();
 }

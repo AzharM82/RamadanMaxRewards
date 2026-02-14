@@ -22,6 +22,7 @@ import type { DaySection, Deed } from './types';
 import { useAuth } from './contexts/AuthContext';
 import LoginPage from './pages/LoginPage';
 import ProfileSetupPage from './pages/ProfileSetupPage';
+import AdminPage from './pages/AdminPage';
 
 // ---------------------------------------------------------------------------
 // Tab definitions
@@ -88,7 +89,7 @@ const SECTION_ACCENT: Record<string, { className: string; color: string }> = {
 // App
 // ---------------------------------------------------------------------------
 function App() {
-  const { loading, isAuthenticated, needsProfile, profile, logout } = useAuth();
+  const { loading, isAuthenticated, isAdmin, needsProfile, profile, logout } = useAuth();
 
   const {
     currentDay,
@@ -106,6 +107,7 @@ function App() {
     saveToCloud,
   } = useHabitStorage();
 
+  const [showAdmin, setShowAdmin] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
 
   const [selectedDay, setSelectedDay] = useState<number>(1);
@@ -227,6 +229,10 @@ function App() {
     return <ProfileSetupPage />;
   }
 
+  if (showAdmin && isAdmin) {
+    return <AdminPage onClose={() => setShowAdmin(false)} />;
+  }
+
   // -------------------------------------------------------------------------
   // Render
   // -------------------------------------------------------------------------
@@ -246,6 +252,17 @@ function App() {
               </h1>
             </div>
             <div className="flex-1 flex items-center justify-end gap-2">
+              {isAdmin && (
+                <button
+                  onClick={() => setShowAdmin(true)}
+                  className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-[#E8E4DE] transition-colors cursor-pointer"
+                  title="Admin Dashboard"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-[#86868b]">
+                    <path fillRule="evenodd" d="M7.84 1.804A1 1 0 0 1 8.82 1h2.36a1 1 0 0 1 .98.804l.331 1.652a6.993 6.993 0 0 1 1.929 1.115l1.598-.54a1 1 0 0 1 1.186.447l1.18 2.044a1 1 0 0 1-.205 1.251l-1.267 1.113a7.047 7.047 0 0 1 0 2.228l1.267 1.113a1 1 0 0 1 .206 1.25l-1.18 2.045a1 1 0 0 1-1.187.447l-1.598-.54a6.993 6.993 0 0 1-1.929 1.115l-.33 1.652a1 1 0 0 1-.98.804H8.82a1 1 0 0 1-.98-.804l-.331-1.652a6.993 6.993 0 0 1-1.929-1.115l-1.598.54a1 1 0 0 1-1.186-.447l-1.18-2.044a1 1 0 0 1 .205-1.251l1.267-1.114a7.05 7.05 0 0 1 0-2.227L1.821 7.773a1 1 0 0 1-.206-1.25l1.18-2.045a1 1 0 0 1 1.187-.447l1.598.54A6.992 6.992 0 0 1 7.51 3.456l.33-1.652ZM10 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clipRule="evenodd" />
+                  </svg>
+                </button>
+              )}
               <span className="text-xs text-[#86868b] truncate max-w-[80px]">
                 {profile?.displayName}
               </span>
