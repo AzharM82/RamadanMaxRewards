@@ -31,10 +31,6 @@
       "allowedRoles": ["anonymous"]
     },
     {
-      "route": "/api/admin-ping",
-      "allowedRoles": ["anonymous"]
-    },
-{
       "route": "/api/*",
       "allowedRoles": ["authenticated"]
     },
