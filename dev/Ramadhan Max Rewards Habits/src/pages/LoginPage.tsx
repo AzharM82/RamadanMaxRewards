@@ -42,7 +42,7 @@ export default function LoginPage() {
             </a>
 
             <a
-              href="/.auth/login/aad"
+              href="/.auth/login/microsoft"
               className="flex items-center justify-center gap-3 w-full px-4 py-3.5 rounded-2xl bg-[#FFFEFA] border border-[#E8E4DE] text-[#1d1d1f] font-medium text-sm shadow-sm hover:shadow-md transition-all active:scale-[0.98]"
             >
               <svg viewBox="0 0 23 23" className="w-5 h-5" aria-hidden="true">

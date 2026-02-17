@@ -45,8 +45,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         } else {
           setNeedsProfile(true);
         }
-      } catch (err) {
+      } catch (err: any) {
         console.error("[Auth] init failed:", err);
+        // error already logged above
       } finally {
         if (!cancelled) setLoading(false);
       }
