@@ -45,8 +45,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         } else {
           setNeedsProfile(true);
         }
-      } catch {
-        // Auth check failed — user not logged in
+      } catch (err) {
+        console.error("[Auth] init failed:", err);
       } finally {
         if (!cancelled) setLoading(false);
       }
