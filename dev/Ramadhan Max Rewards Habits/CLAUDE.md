@@ -1,18 +1,19 @@
 # Ramadan Max Rewards - Project Guide
 
 ## Overview
-Ramadan habit tracking app with Google/Microsoft auth, Cosmos DB backend, and admin role. Built with React 19 + TypeScript + Vite + Tailwind CSS v4. Deployed to Azure Static Web Apps with managed API functions.
+Ramadan habit tracking app with Google/Microsoft auth, Azure Table Storage backend, and admin role. Built with React 19 + TypeScript + Vite + Tailwind CSS v4. Deployed to Azure Static Web Apps with managed API functions.
 
 ## Live URL
 https://brave-cliff-0ab6ad01e.6.azurestaticapps.net
 
 ## Azure Resources (resource group: `rg-aftersalahazkaar`)
-- **SWA**: `RamadanMaxRewards` (Standard plan, West US 2)
-- **Cosmos DB**: `aftersalahazkaar-cosmos` → database `RamadanApp` → containers `profiles`, `progress` (partition key: `/userId`)
+- **SWA**: `RamadanMaxRewards` (Free plan, West US 2)
+- **Table Storage**: `azkaaraftersalahsa` → tables `Profiles`, `Progress` (partitionKey: `default`, rowKey: userId)
+- **Cosmos DB**: DELETED (2026-03-13) — migrated to Table Storage, saved ~$16/mo
 - **Do NOT touch**: `AzkaarAfterSalah` SWA (separate app at calm-moss-0dbb8311e.4.azurestaticapps.net)
 
 ## App Settings (on SWA, not in code)
-`GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `AAD_CLIENT_ID`, `AAD_CLIENT_SECRET`, `COSMOS_CONNECTION_STRING`, `ADMIN_EMAIL`
+`GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `AAD_CLIENT_ID`, `AAD_CLIENT_SECRET`, `TABLE_STORAGE_CONNECTION_STRING`, `ADMIN_EMAIL`
 
 ## Project Structure
 ```
@@ -30,16 +31,17 @@ https://brave-cliff-0ab6ad01e.6.azurestaticapps.net
 │   └── types.ts            # AllProgress, QuranProgress, DayProgress, etc.
 ├── api/                    # Azure Functions (Node.js v4, TypeScript)
 │   ├── src/functions/      # GetRoles, profile, progress endpoints
-│   ├── src/lib/            # auth.ts (x-ms-client-principal), cosmos.ts (DB client)
+│   ├── src/lib/            # auth.ts (x-ms-client-principal), cosmos.ts (Table Storage client)
 │   ├── tsconfig.json       # Separate from frontend (no verbatimModuleSyntax)
-│   └── package.json        # @azure/functions, @azure/cosmos
+│   └── package.json        # @azure/functions, @azure/data-tables
 ├── staticwebapp.config.json # Auth providers, route protection, platform config
 └── .gitignore              # Excludes node_modules, dist, .env, *.md
 ```
 
 ## Key Architecture Decisions
-- **Single Save button** instead of per-toggle API calls (cost optimization — 1 Cosmos write per save vs 26+ per session)
+- **Single Save button** instead of per-toggle API calls (cost optimization — 1 Table Storage write per save vs 26+ per session)
 - **localStorage as cache**, API as source of truth. On mount: load local instantly, fetch API in background
+- **Table Storage schema**: `Profiles` table (flat fields), `Progress` table (habits/quran as JSON strings)
 - **`isDirty` flag** tracks unsaved changes; floating "Save Progress" button appears when dirty
 - **Completion % capped at 100%** — planner deeds + habits share the same progress object
 - **Admin role**: `reachazure37@gmail.com` gets `admin` via `/api/GetRoles` (called by SWA at login)

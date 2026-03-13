@@ -1,6 +1,6 @@
 import { app, HttpRequest, HttpResponseInit, InvocationContext } from "@azure/functions";
 import { requireAuth } from "../lib/auth.js";
-import { getProgressContainer } from "../lib/cosmos.js";
+import { getProgressClient, getEntity, upsertEntity } from "../lib/cosmos.js";
 
 app.http("ProgressGet", {
   methods: ["GET"],
@@ -9,32 +9,20 @@ app.http("ProgressGet", {
   handler: async (req: HttpRequest, _context: InvocationContext): Promise<HttpResponseInit> => {
     try {
       const principal = requireAuth(req);
-      const container = getProgressContainer();
+      const client = getProgressClient();
+      const entity = await getEntity(client, principal.userId);
 
-      try {
-        const { resource } = await container.item(principal.userId, principal.userId).read();
-        if (!resource) {
-          return {
-            status: 200,
-            jsonBody: { habits: {}, quran: {} },
-          };
-        }
-        return {
-          status: 200,
-          jsonBody: {
-            habits: resource.habits || {},
-            quran: resource.quran || {},
-          },
-        };
-      } catch (err: any) {
-        if (err.code === 404) {
-          return {
-            status: 200,
-            jsonBody: { habits: {}, quran: {} },
-          };
-        }
-        throw err;
+      if (!entity) {
+        return { status: 200, jsonBody: { habits: {}, quran: {} } };
       }
+
+      return {
+        status: 200,
+        jsonBody: {
+          habits: entity.habits ? JSON.parse(entity.habits as string) : {},
+          quran: entity.quran ? JSON.parse(entity.quran as string) : {},
+        },
+      };
     } catch (err: any) {
       if (err.message === "Unauthorized") {
         return { status: 401, jsonBody: { error: "Unauthorized" } };
@@ -60,30 +48,31 @@ app.http("ProgressPost", {
         return { status: 400, jsonBody: { error: "habits and quran are required" } };
       }
 
-      const container = getProgressContainer();
+      const client = getProgressClient();
       const now = new Date().toISOString();
 
-      const doc = {
-        id: principal.userId,
-        userId: principal.userId,
-        habits: body.habits,
-        quran: body.quran,
+      const entity = {
+        partitionKey: "default",
+        rowKey: principal.userId,
+        habits: JSON.stringify(body.habits),
+        quran: JSON.stringify(body.quran),
         updatedAt: now,
       };
 
-      const { resource } = await container.items.upsert(doc);
+      await upsertEntity(client, entity);
+
       return {
         status: 200,
         jsonBody: {
-          habits: resource!.habits,
-          quran: resource!.quran,
+          habits: body.habits,
+          quran: body.quran,
         },
       };
     } catch (err: any) {
       if (err.message === "Unauthorized") {
         return { status: 401, jsonBody: { error: "Unauthorized" } };
       }
-      context.error("ProgressPost error:", err.message, err.code, err.stack);
+      context.error("ProgressPost error:", err.message, err.stack);
       return { status: 500, jsonBody: { error: err.message || "Internal server error" } };
     }
   },

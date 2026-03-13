@@ -1,6 +1,6 @@
 import { app, HttpRequest, HttpResponseInit, InvocationContext } from "@azure/functions";
 import { requireAuth } from "../lib/auth.js";
-import { getProfilesContainer, getProgressContainer } from "../lib/cosmos.js";
+import { getProfilesClient, getProgressClient, listAllEntities } from "../lib/cosmos.js";
 
 app.http("AdminTelemetry", {
   methods: ["GET"],
@@ -15,27 +15,30 @@ app.http("AdminTelemetry", {
         return { status: 403, jsonBody: { error: "Forbidden" } };
       }
 
-      const profilesContainer = getProfilesContainer();
-      const progressContainer = getProgressContainer();
+      const profilesClient = getProfilesClient();
+      const progressClient = getProgressClient();
 
-      const { resources: profiles } = await profilesContainer.items
-        .query({ query: "SELECT c.userId, c.identityProvider, c.createdAt, c.displayName, c.email FROM c" })
-        .fetchAll();
+      const profiles = await listAllEntities(profilesClient);
+      const progressEntities = await listAllEntities(progressClient);
 
-      const { resources: progressDocs } = await progressContainer.items
-        .query({ query: "SELECT c.userId, c.habits, c.quran, c.updatedAt FROM c" })
-        .fetchAll();
+      // Parse progress docs (habits/quran stored as JSON strings in Table Storage)
+      const progressDocs = progressEntities.map((e) => ({
+        userId: e.rowKey as string,
+        habits: e.habits ? JSON.parse(e.habits as string) : {},
+        quran: e.quran ? JSON.parse(e.quran as string) : {},
+        updatedAt: e.updatedAt as string || "",
+      }));
 
       const displayNameMap = new Map<string, string>();
       for (const p of profiles) {
-        displayNameMap.set(p.userId, p.displayName || "");
+        displayNameMap.set(p.rowKey as string, (p.displayName as string) || "");
       }
 
       const totalUsers = profiles.length;
 
       const usersByProvider = { google: 0, microsoft: 0, other: 0 };
       for (const p of profiles) {
-        const provider = (p.identityProvider || "").toLowerCase();
+        const provider = ((p.identityProvider as string) || "").toLowerCase();
         if (provider === "google") usersByProvider.google++;
         else if (provider === "aad" || provider === "azureactivedirectory") usersByProvider.microsoft++;
         else usersByProvider.other++;
@@ -43,18 +46,18 @@ app.http("AdminTelemetry", {
 
       const sortedProfiles = [...profiles]
         .filter((p) => p.createdAt)
-        .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+        .sort((a, b) => new Date(b.createdAt as string).getTime() - new Date(a.createdAt as string).getTime());
       const recentSignups = sortedProfiles.slice(0, 10).map((p) => ({
-        displayName: p.displayName || "",
-        email: p.email || "",
-        createdAt: p.createdAt,
-        provider: p.identityProvider || "",
+        displayName: (p.displayName as string) || "",
+        email: (p.email as string) || "",
+        createdAt: p.createdAt as string,
+        provider: (p.identityProvider as string) || "",
       }));
 
       const signupDayCounts = new Map<string, number>();
       for (const p of profiles) {
         if (p.createdAt) {
-          const date = p.createdAt.substring(0, 10);
+          const date = (p.createdAt as string).substring(0, 10);
           signupDayCounts.set(date, (signupDayCounts.get(date) || 0) + 1);
         }
       }
